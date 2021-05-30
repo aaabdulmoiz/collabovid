@@ -1,0 +1,18 @@
+const mongoose = require("mongoose");
+mongoose.set("useFindAndModify", false);
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    });
+    console.log(`DB Connected: ${conn.connection.host}`.cyan.underline);
+  } catch (error) {
+    console.log(`Error: ${error.message}`.red.bold);
+    process.exit(1); //exit with failure
+  }
+};
+
+module.exports = connectDB;

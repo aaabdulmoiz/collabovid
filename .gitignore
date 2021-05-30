@@ -1,0 +1,5 @@
+# production
+
+#misc
+.env
+node_modules
